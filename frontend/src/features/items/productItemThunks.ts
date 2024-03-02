@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Item } from '../../types';
+import { deleteItemData, Item } from '../../types';
 import axiosApi from '../../axiosApi';
 
 export const getItems = createAsyncThunk<Item[], void>(
@@ -26,5 +26,16 @@ export const getItemById = createAsyncThunk<Item, string>(
     const response = await axiosApi.get(`/item/details/${itemId}`);
 
     return response.data;
+  }
+);
+
+export const deleteOwnItemByUser = createAsyncThunk<void, deleteItemData>(
+  'item/deleteItem',
+  async (data) => {
+    await axiosApi.delete(`/item/${data.id}`, {
+      headers: {
+        Authorization: data.token
+      }
+    });
   }
 );

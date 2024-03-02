@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Item } from '../../types';
-import { getItemById, getItems, getItemsByCategory, getItemsById } from './productItemThunks';
+import { deleteOwnItemByUser, getItemById, getItems, getItemsByCategory} from './productItemThunks';
 import { RootState } from '../../app/store';
 
 interface productItemState {
@@ -9,6 +9,7 @@ interface productItemState {
 
   itemsOnLoading: boolean,
   itemDetailsOnLoading: boolean,
+  itemDeleteOnLoading: boolean,
 }
 
 const initialState: productItemState = {
@@ -17,6 +18,7 @@ const initialState: productItemState = {
 
   itemsOnLoading: false,
   itemDetailsOnLoading: false,
+  itemDeleteOnLoading: false,
 };
 
 const productItemSlice = createSlice({
@@ -61,6 +63,16 @@ const productItemSlice = createSlice({
     builder.addCase(getItemById.rejected, (state: productItemState) => {
       state.itemDetailsOnLoading = false;
     });
+
+    builder.addCase(deleteOwnItemByUser.pending, (state: productItemState) => {
+      state.itemDeleteOnLoading = true;
+    });
+    builder.addCase(deleteOwnItemByUser.fulfilled, (state: productItemState) => {
+      state.itemDeleteOnLoading = false;
+    });
+    builder.addCase(deleteOwnItemByUser.rejected, (state: productItemState) => {
+      state.itemDeleteOnLoading = false;
+    });
   }
 });
 
@@ -71,3 +83,4 @@ export const selectItemDetails = (state: RootState) => state.items.itemDetails;
 
 export const selectLoadingProductItems = (state: RootState) => state.items.itemsOnLoading;
 export const selectLoadingItemDetail = (state: RootState) => state.items.itemDetailsOnLoading;
+export const selectLoadingDeleteItem = (state: RootState) => state.items.itemDeleteOnLoading;

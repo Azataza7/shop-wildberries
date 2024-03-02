@@ -55,3 +55,8 @@ export interface ValidationError {
   name: string;
   _message: string;
 }
+
+export interface deleteItemData {
+  token: string;
+  id: string
+}
