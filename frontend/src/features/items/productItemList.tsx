@@ -10,24 +10,23 @@ const ProductItemList = () => {
   const dispatch = useAppDispatch();
 
   const productItems: Item[] = useAppSelector(selectProductItems);
-  const onLoading = useAppSelector(selectLoadingProductItems);
+  const onLoading: boolean = useAppSelector(selectLoadingProductItems);
 
   useEffect(() => {
-    dispatch(getItems())
-  }, [dispatch])
+    dispatch(getItems());
+  }, [dispatch]);
 
   if (onLoading || !productItems) {
     return <CircularProgress sx={{position: 'absolute', top: '50%', left: '50%'}} size={60} color="warning"/>;
   }
 
-  const productItemsContainer:JSX.Element[] = productItems.map((item) => (
+  const productItemsContainer: JSX.Element[] = productItems.map((item) => (
     <ProductItem key={item._id} item={item}/>
-  ))
+  ));
 
-  console.log(productItems)
   return (
     <>
-      <Grid component="div" sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: '15px'}}>
+      <Grid component="div" sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '15px'}}>
         {productItemsContainer}
       </Grid>
     </>

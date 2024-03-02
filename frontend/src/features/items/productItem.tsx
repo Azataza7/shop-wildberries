@@ -2,6 +2,7 @@ import React from 'react';
 import { Item } from '../../types';
 import { Grid, Typography } from '@mui/material';
 import { apiURL } from '../../constants';
+import { NavLink } from 'react-router-dom';
 
 interface Props {
   item: Item;
@@ -11,7 +12,9 @@ const ProductItem: React.FC<Props> = ({item}) => {
 
   return (
     <>
-      <Grid component="div" sx={{ padding: 2, transition: 'transform 0.2s ease',
+      <Grid component={NavLink} to={'/details/' + item._id} sx={{ padding: 2, transition: 'transform 0.2s ease', cursor: "pointer",
+        textDecoration: 'none', color: '#242424',
+
         '&:hover': {
           transform: 'scale(1.02)'
         }}}>

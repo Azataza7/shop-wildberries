@@ -10,3 +10,21 @@ export const getItems = createAsyncThunk<Item[], void>(
     return response.data;
   }
 );
+
+export const getItemsByCategory = createAsyncThunk<Item[], string>(
+  'item/getByCategory',
+  async (categoryId) => {
+    const response = await axiosApi.get(`/item/${categoryId}`);
+
+    return response.data;
+  }
+);
+
+export const getItemById = createAsyncThunk<Item, string>(
+  'item/getById',
+  async (itemId) => {
+    const response = await axiosApi.get(`/item/details/${itemId}`);
+
+    return response.data;
+  }
+);
