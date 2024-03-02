@@ -34,7 +34,7 @@ itemRouter.get('/:category', async (req: Request, res: Response, next: NextFunct
   }
 });
 
-itemRouter.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
+itemRouter.get('/details/:id', async (req: Request, res: Response, next: NextFunction) => {
   const itemId = req.params.id;
 
   try {

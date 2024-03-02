@@ -60,3 +60,12 @@ export interface deleteItemData {
   token: string;
   id: string
 }
+
+export interface userItem {
+  title: string;
+  description: string;
+  image: File | null;
+  price: number;
+  token: string;
+  category: string;
+}

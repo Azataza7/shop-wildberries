@@ -16,7 +16,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 import { login } from './usersThunks';
-import { selectLoginError, selectLoginLoading } from './usersSlice';
+import { selectLoginError} from './usersSlice';
 import { LoginMutation } from '../../types';
 
 const Login = () => {
@@ -24,7 +24,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const error = useAppSelector(selectLoginError);
-  const onLoading = useAppSelector(selectLoginLoading);
 
   const [state, setState] = useState<LoginMutation>({
     username: '',
@@ -46,10 +45,6 @@ const Login = () => {
     await dispatch(login(state)).unwrap();
     navigate('/');
   };
-
-  if (onLoading) {
-    return <CircularProgress sx={{position: 'absolute', top: '50%', left: '50%'}} size={60} color="warning"/>;
-  }
 
   return (
     <Container component="main" maxWidth="xl"

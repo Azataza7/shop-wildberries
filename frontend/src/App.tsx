@@ -7,11 +7,13 @@ import Category from './features/category/category';
 import ProductItemDetails from './features/items/productItemDetails';
 import Register from './features/Users/Register';
 import Login from './features/Users/Login';
+import AddNewItem from './features/items/AddNewItem';
 
 const App = () => {
   const location = useLocation();
   const hideCategory = location.pathname.includes('/details')
-    || location.pathname.includes('/login') || location.pathname.includes('/register');
+    || location.pathname.includes('/login') || location.pathname.includes('/register')
+    || location.pathname.includes('/addItem');
 
   return (
     <>
@@ -27,6 +29,8 @@ const App = () => {
               <Route path="/details/:id" element={(<ProductItemDetails/>)}/>
               <Route path="/login" element={(<Login/>)}/>
               <Route path="/register" element={(<Register/>)}/>
+              <Route path="/addItem" element={(<AddNewItem/>)}/>
+
               <Route path="*" element={(
                 <Grid component="div"
                       sx={{position: 'absolute', top: '40%', left: '33%', border: '3px solid #ed6c02', padding: 3}}

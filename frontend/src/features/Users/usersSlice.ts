@@ -63,8 +63,6 @@ export const userReducer = UsersSlice.reducer;
 
 export const selectUser = (state: RootState) => state.users.user;
 
-export const selectUserLoading = (state: RootState) => state.users.registerLoading;
-export const selectLoginLoading = (state: RootState) => state.users.loginLoading;
 
 export const selectUserError = (state: RootState) => state.users.registerError;
 export const selectLoginError = (state: RootState) => state.users.loginError;

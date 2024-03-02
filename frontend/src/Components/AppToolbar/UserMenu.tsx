@@ -36,7 +36,7 @@ const UserMenu = () => {
         onLogout={logOutHandler}
       />
       <Grid>
-        <Button component={NavLink} to="/addPost" type="button" sx={{color: '#000', bgcolor: '#EEE', borderRadius: '20px', fontWeight: 600}}>
+        <Button component={NavLink} to="/addItem" type="button" sx={{color: '#000', bgcolor: '#EEE', borderRadius: '20px', fontWeight: 600}}>
           <AddIcon/> Create
         </Button>
 

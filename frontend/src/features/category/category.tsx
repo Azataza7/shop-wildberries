@@ -3,11 +3,10 @@ import { Accordion, AccordionDetails, AccordionSummary, CircularProgress } from 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectCategories, selectLoadingCategories } from './categorySlice';
-import { Category, Item } from '../../types';
+import { Category } from '../../types';
 import { getCategories } from './categoryThunks';
 import { Link } from 'react-router-dom';
 import { getItems, getItemsByCategory } from '../items/productItemThunks';
-import { selectItemDetails } from '../items/productItemSlice';
 
 
 const Category = () => {
