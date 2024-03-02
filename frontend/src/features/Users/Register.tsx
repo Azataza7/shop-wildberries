@@ -91,6 +91,30 @@ const Register = () => {
                 helperText={getFieldError('password')}
               />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Display Name"
+                name="displayName"
+                autoComplete="new-displayName"
+                value={state.displayName}
+                onChange={inputChangeHandler}
+                error={Boolean(getFieldError('displayName'))}
+                helperText={getFieldError('displayName')}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Phone Number"
+                name="phoneNumber"
+                autoComplete="new-phoneNumber"
+                value={state.phoneNumber}
+                onChange={inputChangeHandler}
+                error={Boolean(getFieldError('phoneNumber'))}
+                helperText={getFieldError('phoneNumber')}
+              />
+            </Grid>
           </Grid>
           <Button
             type="submit"

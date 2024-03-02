@@ -26,10 +26,6 @@ const Login = () => {
   const error = useAppSelector(selectLoginError);
   const onLoading = useAppSelector(selectLoginLoading);
 
-  if (onLoading) {
-    return <CircularProgress sx={{position: 'absolute', top: '50%', left: '50%'}} size={60} color="warning"/>;
-  }
-
   const [state, setState] = useState<LoginMutation>({
     username: '',
     password: ''
@@ -50,6 +46,10 @@ const Login = () => {
     await dispatch(login(state)).unwrap();
     navigate('/');
   };
+
+  if (onLoading) {
+    return <CircularProgress sx={{position: 'absolute', top: '50%', left: '50%'}} size={60} color="warning"/>;
+  }
 
   return (
     <Container component="main" maxWidth="xl"
