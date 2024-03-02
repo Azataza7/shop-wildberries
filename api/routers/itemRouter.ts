@@ -20,6 +20,38 @@ itemRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
+itemRouter.get('/:category', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const category = req.params.category;
+
+    const results: item[] = await ItemModel.find({ category: category })
+      .populate('user')
+      .populate('category', 'name');
+
+    return res.send(results);
+  } catch (e) {
+    next(e);
+  }
+});
+
+itemRouter.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
+  const itemId = req.params.id;
+
+  try {
+    const results: item | null = await ItemModel.findById(itemId)
+      .populate('user')
+      .populate('category', 'name');
+
+    if (!results) {
+      return res.status(404).send({error: 'Item not found'});
+    }
+
+    return res.send(results);
+  } catch (e) {
+    next(e);
+  }
+});
+
 itemRouter.delete('/:id', auth, async (req: RequestWithUser, res: Response, next: NextFunction) => {
   const itemId = req.params.id;
 
