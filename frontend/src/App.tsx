@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { Container, Grid, Typography } from '@mui/material';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
+import ProductItemList from './features/items/productItemList';
+import AppToolbar from './Components/AppToolbar/AppToolbar';
 
 const App = () => {
 
@@ -8,11 +10,11 @@ const App = () => {
     <>
       <main>
         <header>
-
+          <AppToolbar/>
         </header>
         <Container maxWidth="fixed">
           <Routes>
-
+            <Route path="/" element={(<ProductItemList/>)}/>
 
 
             <Route path="*" element={(
